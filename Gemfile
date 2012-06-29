@@ -44,4 +44,7 @@ group :test do
 
   # Use Capybara for integration testing.
   gem 'capybara'
+
+  # Use factories instead of creating models manually.
+  gem 'factory_girl_rails'
 end
