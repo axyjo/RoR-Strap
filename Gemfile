@@ -36,3 +36,9 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+group :test do
+  # Use MiniTest for testing.
+  gem 'minitest'
+  gem 'guard-minitest'
+end
