@@ -41,4 +41,7 @@ group :test do
   # Use MiniTest for testing.
   gem 'minitest'
   gem 'guard-minitest'
+
+  # Use Capybara for integration testing.
+  gem 'capybara'
 end
