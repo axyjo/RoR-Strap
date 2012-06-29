@@ -47,4 +47,7 @@ group :test do
 
   # Use factories instead of creating models manually.
   gem 'factory_girl_rails'
+
+  # Use turn for pretty test reporting.
+  gem 'turn'
 end
