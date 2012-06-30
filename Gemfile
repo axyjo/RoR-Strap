@@ -23,6 +23,11 @@ end
 
 gem 'jquery-rails'
 
+
+# Gems used to authenticate users.
+gem 'omniauth-facebook'
+
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -59,8 +64,4 @@ end
 group :development do
   # Use the thin webserver instead of WEBrick in development.
   gem 'thin'
-end
-
-group :authentication do
-  gem 'omniauth-facebook'
 end
