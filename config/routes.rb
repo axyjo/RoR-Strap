@@ -46,6 +46,12 @@ Rorstrap::Application.routes.draw do
   #     resources :products
   #   end
 
+  resource :authentications
+
+  # OmniAuth session handling.
+  match '/auth/:provider/callback' => 'authentications#create'
+  match '/logout' => 'authentications#logout'
+
   match ':page' => 'static_pages#view'
   root :to => 'static_pages#home'
 
