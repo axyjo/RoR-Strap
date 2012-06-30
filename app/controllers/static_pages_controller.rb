@@ -1,4 +1,9 @@
 class StaticPagesController < ApplicationController
-  def home
+  def view
+    begin
+      render params[:page]
+    rescue
+      not_found
+    end
   end
 end
