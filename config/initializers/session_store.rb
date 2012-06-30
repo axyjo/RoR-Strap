@@ -1,8 +1,8 @@
 # Be sure to restart your server when you modify this file.
 
-Rorstrap::Application.config.session_store :cookie_store, key: '_rorstrap_session'
+# Rorstrap::Application.config.session_store :cookie_store, key: '_rorstrap_session'
 
 # Use the database for sessions instead of the cookie-based default,
 # which shouldn't be used to store highly confidential information
 # (create the session table with "rails generate session_migration")
-# Rorstrap::Application.config.session_store :active_record_store
+Rorstrap::Application.config.session_store :active_record_store
