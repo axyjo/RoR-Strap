@@ -52,3 +52,8 @@ group :test do
   # Use turn for pretty test reporting.
   gem 'turn'
 end
+
+group :development do
+  # Use the thin webserver instead of WEBrick in development.
+  gem 'thin'
+end
