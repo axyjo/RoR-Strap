@@ -51,6 +51,9 @@ group :test do
 
   # Use turn for pretty test reporting.
   gem 'turn'
+
+  # Clean up the DB after every test.
+  gem 'database_cleaner'
 end
 
 group :development do
