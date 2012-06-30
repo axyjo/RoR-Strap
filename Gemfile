@@ -60,3 +60,7 @@ group :development do
   # Use the thin webserver instead of WEBrick in development.
   gem 'thin'
 end
+
+group :authentication do
+  gem 'omniauth-facebook'
+end
