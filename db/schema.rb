@@ -17,9 +17,10 @@ ActiveRecord::Schema.define(:version => 20120630215423) do
     t.integer  "user_id"
     t.string   "provider"
     t.string   "uid"
-    t.string   "token"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "oauth_token"
+    t.datetime "oauth_expires"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "sessions", :force => true do |t|
