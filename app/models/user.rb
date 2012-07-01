@@ -6,4 +6,10 @@ class User < ActiveRecord::Base
   validates_format_of :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i
 
   has_many :authentications
+
+  def display_name
+    initial = last_name[0].chr
+    "#{first_name} #{initial}."
+  end
+
 end
