@@ -11,17 +11,31 @@ class AuthenticationsController < ApplicationController
     if auth
       session[:user_id] = auth.user_id
       user = User.find(auth.user_id)
+      user.update_from_omniauth(omniauth)
+      user.save!
+      if !omniauth.credentials.token.nil?
+        auth.oauth_token = omniauth.credentials.token
+        auth.oauth_expires = Time.at(omniauth.credentials.expires_at)
+        auth.save!
+      end
       flash[:notice] = "You have logged in."
       redirect_to root_url
     elsif current_user
       current_user.authentications.create!(:provider => omniauth['provider'], :uid => omniauth['uid'])
     else
-      u = User.create(:email => omniauth['info']['email'])
+      u = User.new()
+      u.update_from_omniauth(omniauth)
+      u.to_yaml
       if u.save
-        u.authentications.create!(:provider => omniauth['provider'], :uid => omniauth['uid'])
+        auth = u.authentications.create!(:provider => omniauth['provider'], :uid => omniauth['uid'])
+        if !omniauth.credentials.token.nil?
+          auth.oauth_token = omniauth.credentials.token
+          auth.oauth_expires = Time.at(omniauth.credentials.expires_at)
+          auth.save!
+        end
         session[:user_id] = u.id
       else
-        flash[:notice] = "An account with your email address already exists. Please log in first."
+        flash[:notice] = "An account already exists. Please log in first."
       end
       redirect_to root_url
     end

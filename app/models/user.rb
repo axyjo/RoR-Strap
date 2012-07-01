@@ -12,4 +12,9 @@ class User < ActiveRecord::Base
     "#{first_name} #{initial}."
   end
 
+  def update_from_omniauth(omniauth)
+    self.first_name = omniauth.info.first_name
+    self.last_name = omniauth.info.last_name
+    self.email = omniauth.info.email
+  end
 end
