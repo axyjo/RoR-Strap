@@ -12,6 +12,9 @@ class AuthenticationsController < ApplicationController
       session[:user_id] = auth.user_id
       user = User.find(auth.user_id)
       user.update_from_omniauth(omniauth)
+      user.last_login_time = user.current_login_time
+      user.current_login_time = Time.now()
+      user.login_count++
       user.save!
       if !omniauth.credentials.token.nil?
         auth.oauth_token = omniauth.credentials.token
@@ -25,7 +28,8 @@ class AuthenticationsController < ApplicationController
     else
       u = User.new()
       u.update_from_omniauth(omniauth)
-      u.to_yaml
+      u.current_login_time = Time.now()
+      u.login_count = 1
       if u.save
         auth = u.authentications.create!(:provider => omniauth['provider'], :uid => omniauth['uid'])
         if !omniauth.credentials.token.nil?
