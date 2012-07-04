@@ -33,6 +33,7 @@ class AuthenticationsController < ApplicationController
           auth.oauth_expires = Time.at(omniauth.credentials.expires_at)
           auth.save!
         end
+        UserMailer.signup_confirmation(u).deliver
         session[:user_id] = u.id
       else
         flash[:notice] = "An account already exists. Please log in first."
