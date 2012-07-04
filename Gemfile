@@ -64,4 +64,7 @@ end
 group :development do
   # Use the thin webserver instead of WEBrick in development.
   gem 'thin'
+
+  # Use letter_opener for testing out mailers locally.
+  gem 'letter_opener'
 end
